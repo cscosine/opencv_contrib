@@ -49,6 +49,17 @@
 #include "../common.hpp"
 #include "opencv2/core/cuda/cuda_compat.hpp"
 
+// `ulong` is provided by <sys/types.h> on glibc-based platforms, but it is not
+// a builtin and is not defined on Windows, where CUDA only provides the vector
+// types (ulong1..4) and not the scalar. Define it so the MakeVec<ulong> and
+// VecTraits<ulong> specializations below compile there too. unsigned long
+// matches the element type CUDA uses for ulong1..4 on each platform.
+#if defined(_WIN32)
+typedef unsigned long ulong;
+typedef unsigned long long ulonglong;
+typedef long long longlong;
+#endif
+
 namespace cv {
 
     using cv::cuda::device::compat::double4;
@@ -78,6 +89,10 @@ CV_CUDEV_MAKE_VEC_INST(float)
 CV_CUDEV_MAKE_VEC_INST(double)
 CV_CUDEV_MAKE_VEC_INST(long)
 CV_CUDEV_MAKE_VEC_INST(ulong)
+#if defined(_WIN32)
+CV_CUDEV_MAKE_VEC_INST(longlong)
+CV_CUDEV_MAKE_VEC_INST(ulonglong)
+#endif
 
 #undef CV_CUDEV_MAKE_VEC_INST
 
@@ -146,6 +161,10 @@ CV_CUDEV_VEC_TRAITS_INST(float)
 CV_CUDEV_VEC_TRAITS_INST(double)
 CV_CUDEV_VEC_TRAITS_INST(long)
 CV_CUDEV_VEC_TRAITS_INST(ulong)
+#if defined(_WIN32)
+CV_CUDEV_VEC_TRAITS_INST(longlong)
+CV_CUDEV_VEC_TRAITS_INST(ulonglong)
+#endif
 
 #undef CV_CUDEV_VEC_TRAITS_INST
 
