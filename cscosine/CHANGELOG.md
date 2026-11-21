@@ -1,8 +1,9 @@
 # Changelog of the cscosine fork of opencv_contrib
 
-## v5.1.0-cpu.2 (and v5.1.0-cuda.1, to tag once csopencvcuda has built it)
+## v5.1.0-cpu.3 (and v5.1.0-cuda.1, to tag once csopencvcuda has built it)
 
-- No change here: the tag follows the opencv fork's `v5.1.0-cpu.2` (an MLAS fix), so both forks keep the same tags.
+- No change here: the tag follows the opencv fork's `v5.1.0-cpu.3` (an assembler fix), so both forks keep the same
+  tags. `v5.1.0-cpu.2` was never released either.
 
 ## v5.1.0-cpu.1 (never released: the Linux clang builds of opencv failed)
 
