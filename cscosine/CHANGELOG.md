@@ -1,5 +1,9 @@
 # Changelog of the cscosine fork of opencv_contrib
 
+## v5.1.0-cpu.4
+
+- No change here: the tag follows the opencv fork's `v5.1.0-cpu.4` (a rebuild on third_party_base_libs 0.1.1).
+
 ## v5.1.0-cpu.3 (and v5.1.0-cuda.1, to tag once csopencvcuda has built it)
 
 - No change here: the tag follows the opencv fork's `v5.1.0-cpu.3` (an assembler fix), so both forks keep the same
